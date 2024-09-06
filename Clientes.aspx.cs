@@ -46,8 +46,8 @@ namespace Projeto
         protected void Button5_Click(object sender, EventArgs e)
         {
             FormView1.ChangeMode(FormViewMode.Edit);
-            Button5.Enabled = false;
-            Button6.Enabled = true;
+            Editar.Enabled = false;
+            Gravar.Enabled = true;
         }
 
         protected void Button6_Click(object sender, EventArgs e)
@@ -61,15 +61,26 @@ namespace Projeto
                 catch (Exception ex)
                 {
                     // Log the error or display a message
-                  Response.Write("Error updating item: " + ex.Message);
+                  Response.Write("Erro para salvar: " + ex.Message);
                 }
                 finally
                 {
                     FormView1.ChangeMode(FormViewMode.ReadOnly);
-                    Button5.Enabled = true;
-                    Button6.Enabled = false;
+                    Editar.Enabled = true;
+                    Gravar.Enabled = false;
                 }
             }
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            FormView1.ChangeMode(FormViewMode.Insert);
+         
+        }
+
+        protected void DeleteButton_Click(object sender, EventArgs e)
+        {
+            FormView1.ChangeMode(FormViewMode.Delete);
         }
     }
 }

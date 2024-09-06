@@ -1,4 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clientes.aspx.cs" Inherits="Projeto.Clientes" %>
+
+<script runat="server">
+
+    protected void DeleteButton_Click(object sender, EventArgs e)
+    {
+
+    }
+</script>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:FormView ID="FormView1" runat="server" AllowPaging="True" DataKeyNames="idCliente" DataSourceID="SqlDataSource1" Width="282px">
         <EditItemTemplate>
@@ -84,13 +93,14 @@
     </asp:FormView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cesumarConnectionString %>" 
         SelectCommand="SELECT * FROM [Clientes]" 
-        InsertCommandType="Text"
-        UpdateCommand="UPDATE Clientes SET Nome = @Nome, Endereco = @Endereco, Bairro = @Bairro, Cidade = @Cidade, CEP = @CEP, UF = @UF, CNPJ = @CNPJ WHERE idCliente = @idCliente"></asp:SqlDataSource>
+        InsertCommand="INSERT INTO [Clientes] (Nome, Endereco, Bairro, Cidade, CEP, UF, CNPJ) VALUES (@Nome, @Endereco, @Bairro, @Cidade, @CEP, @UF, @CNPJ)"
+        UpdateCommand="UPDATE Clientes SET Nome = @Nome, Endereco = @Endereco, Bairro = @Bairro, Cidade = @Cidade, CEP = @CEP, UF = @UF, CNPJ = @CNPJ WHERE idCliente = @idCliente">
+    </asp:SqlDataSource>
     <br />
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="[" Width="56px" />
     <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="&lt;&lt;" Width="56px" />
     <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="&gt;&gt;" Width="56px" />
     <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="]" Width="56px" />
-    <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Editar"  Width="65px"/>
-    <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Gravar"  Width="70px"/>
-</asp:Content>
+    <asp:Button ID="Editar" runat="server" OnClick="Button5_Click" Text="Editar"  Width="65px"/>
+    <asp:Button ID="Cadastro" runat="server" OnClick="Button7_Click" Text="Cadastro" />
+    </asp:Content>
